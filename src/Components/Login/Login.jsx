@@ -1,9 +1,11 @@
-import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import auth from "../../Firebase/firebase.config";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+    const { signInUser } = useContext(AuthContext);
     const emailRef = useRef(null);
 
     const [registError, setRegistError] = useState('');
@@ -17,7 +19,7 @@ const Login = () => {
         setRegistError('');
         setSuccess('');
 
-        signInWithEmailAndPassword(auth, email, password)
+        signInUser(email, password)
             .then(result => {
                 console.log(result.user);
                 if (result.user.emailVerified) {
