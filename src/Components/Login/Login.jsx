@@ -24,8 +24,10 @@ const Login = () => {
                 console.log(result.user);
                 if (result.user.emailVerified) {
                     setSuccess('User Login Successful')
+                    return;
                 } else {
                     alert('Please Verify Your Email')
+                    return;
                 }
             })
             .catch(error => {

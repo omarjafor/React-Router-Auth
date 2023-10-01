@@ -16,6 +16,8 @@ const Navbar = () => {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/login'>Login</NavLink></li>
         <li><NavLink to='/register'>Register</NavLink></li>
+        <li><NavLink to='/orders'>Orders</NavLink></li>
+        <li><NavLink to='/profile'>Profile</NavLink></li>
     </>
 
     return (
@@ -38,9 +40,13 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user && <span> {user.email} </span>
+                    user && <span> {user.email} <img
+                        className="relative inline-block h-12 w-12 rounded-full object-cover object-center"
+                        alt="Image placeholder"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHByb2Zlc3Npb25hbCUyMHdvbWFufGVufDB8fDB8fHww&w=1000&q=80"
+                    /></span>
                 }
-                <NavLink to='/login' className='btn' onClick={handleLogOut}>{user ? 'LogOut' : 'Login'}</NavLink>
+                <NavLink to='/login' className='btn btn-sm' onClick={handleLogOut}>{user ? 'LogOut' : 'Login'}</NavLink>
             </div>
         </div>
     );
