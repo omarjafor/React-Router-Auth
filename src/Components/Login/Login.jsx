@@ -5,7 +5,7 @@ import auth from "../../Firebase/firebase.config";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser, googleSignIn } = useContext(AuthContext);
     const emailRef = useRef(null);
 
     const [registError, setRegistError] = useState('');
@@ -38,6 +38,12 @@ const Login = () => {
                 console.log(error.message);
                 setRegistError(error.message);
             })
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+        .then()
+        .catch()
     }
 
     const handleForgetPassword = () => {
@@ -111,15 +117,22 @@ const Login = () => {
                         {
                             emailError && <p className="text-red-600"> {emailError} </p>
                         }
-                        <p className="mt-6 flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased">
+                        <p className="mt-6 mb-2 flex justify-center font-sans text-sm font-normal leading-normal text-inherit antialiased">
                             Don&apos;t have an account?
                             <Link to='/register'
                                 href="#signup"
                                 className="ml-1 block font-sans text-sm font-bold leading-normal text-pink-500 antialiased"
                             >
                                 Sign up
-                            </Link>
+                            </Link> <span> &nbsp; OR </span>
                         </p>
+                        <button
+                            className="block w-full select-none rounded-lg bg-gradient-to-tr from-green-600 to-yellow-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            onClick={handleGoogleSignIn}
+                            data-ripple-light="true"
+                        >
+                            Sign In with Google
+                        </button>
                     </div>
                 </form>
             </div>
