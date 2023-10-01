@@ -42,8 +42,12 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         googleSignIn()
-        .then()
-        .catch()
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
     }
 
     const handleForgetPassword = () => {
