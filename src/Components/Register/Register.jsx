@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { sendEmailVerification, updateProfile } from "firebase/auth";
 import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
@@ -9,6 +9,8 @@ const Register = () => {
     const [registError, setRegistError] = useState('');
     const [success, setSuccess] = useState('');
     const [showPass, setShowPass] = useState(false);
+
+    const navigate = useNavigate();
 
     const { createUser } = useContext(AuthContext);
 
@@ -38,6 +40,8 @@ const Register = () => {
             .then(result => {
                 console.log(result.user);
                 setSuccess('User Registration Successful')
+                e.target.reset();
+                navigate('/login');
 
                 updateProfile(result.user, {
                     displayName: name,
