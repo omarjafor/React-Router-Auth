@@ -7,7 +7,7 @@ const Home = () => {
         <div>
             <h1 className="text-2xl font-bold">This is Home</h1>
             <p>Click on the image to Flip</p>
-            <div className="mt-40">
+            <div className="mt-60">
                 <FlipCard></FlipCard>
             </div>
         </div>
