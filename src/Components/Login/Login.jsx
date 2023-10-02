@@ -10,6 +10,7 @@ const Login = () => {
 
     const [registError, setRegistError] = useState('');
     const [success, setSuccess] = useState('');
+    const [emailError, setEmailError] = useState('');
 
     const navigate = useNavigate();
 

@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div>
             <h1 className="text-2xl font-bold">This is Home</h1>
-            <p>Click on the image to Flip</p>
+            <p> Click On The Image to Flip </p>
             <div className="mt-60">
                 <FlipCard></FlipCard>
             </div>
